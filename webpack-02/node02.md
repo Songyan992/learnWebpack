@@ -3,10 +3,13 @@
 执行命令：npx webpack-dev-server 
 
 也可以在package.json的scripts里设置
+
 "dev":"webpack-dev-server"
+
 这样执行命令 npm run dev 即可
 
 需要设置webpack.config.js
+
 module.exports={
 	devServer:{// 开发服务器配置
 		port:3000,
@@ -16,8 +19,11 @@ module.exports={
 	},
 
 安装html 插件：yarn add html-webpack-plugin -D
+
 使用，在webpack.config.js中配置
+
 let HtmlWebpackPlugin = require("html-webpack-plugin")
+
 	plugins: [//数组，存放着所以的webpack 插件
 		new HtmlWebpackPlugin({
 			template: './src/index.html',/／将文件作为一个模版
