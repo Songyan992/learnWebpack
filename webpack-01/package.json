@@ -1,10 +1,10 @@
 {
-  "name": "webpack-zhu-01",
+  "name": "webpack-01",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "build":"webpack --config webpack.config.copy.js"
+    "build":"webpack --config webpack.config.js"
   },
   "devDependencies": {
     "webpack": "^4.43.0",
