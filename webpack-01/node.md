@@ -17,3 +17,21 @@ You can also set it to 'none' to disable any default behavior. Learn more: https
 
 ## 手动配置webpack
 - 默认配置是webpack.config.js
+运行 npx webpack 默认执行的是 webpack.config.js
+当不存在webpack.config.js，而执行npx webpack 命令时候，会报错
+WARNING in configuration
+The 'mode' option has not been set, webpack will fallback to 'production' for this value. Set 'mode' option to 'development' or 'production' to enable defaults for each environment.
+You can also set it to 'none' to disable any default behavior. Learn more: https://webpack.js.org/configuration/mode/
+
+- 如果想改配置文件的名称，则可以如下操作
+npx webpack --config xxx.js(xxx:修改的配置文件名称)
+例如：把文件名称修改为：webpack.config.copy.js 
+则可：npx webpack --config webpack.config.copy.js
+- 如果文件名称太长，则通过package.json文件来配置,通过执行npm run build，‘build’对应下面设置的名称
+  "scripts": {
+    //"build":"webpack" //默认配置，则对应：webpack.config.js，文件的默认名称
+		"build":"webpack --config webpack.config.copy.js" //文件名更改后的配置，则对应：webpack.config.copy.js，
+  },
+
+
+
