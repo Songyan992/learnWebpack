@@ -1,4 +1,5 @@
 ## webpack 打包文件自动更新，不用手动刷新浏览器
+#### webpack 打包文件自动更新
 安装webpack-dev-server，命令：yarn  add webpack-dev-server -D
 执行命令：npx webpack-dev-server 
 
@@ -17,6 +18,8 @@ module.exports={
 		contentBase:'./dist',
 		compress:true//压缩
 	},
+	
+#### webpack 打包文件自动更新
 
 安装html 插件：yarn add html-webpack-plugin -D
 
