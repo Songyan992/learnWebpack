@@ -218,6 +218,7 @@ mode: 'production', 否则.css文件不压缩
 
 安装：yarn add uglifyjs-webpack-plugin -D
 使用：
+
 	optimization: {//优化，压缩
 		minimizer: [
 			new OptimizeCss(),
@@ -227,7 +228,7 @@ mode: 'production', 否则.css文件不压缩
 				sourceMap:true
 			})
 		]
-	},
+	}
 
 
 
