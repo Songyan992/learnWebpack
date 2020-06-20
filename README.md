@@ -6,3 +6,7 @@ Webpack 学习笔记和相关代码
 ## webpack-02
 自动更新webpack-dev-server 配置
 webpack plugins配置：HtmlWebpackPlugin， html作为插件配置 
+
+## webpack-03
+style-loader  css-loader  less-loader
+
