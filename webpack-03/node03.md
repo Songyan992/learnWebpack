@@ -10,7 +10,6 @@ body{
  @ ./src/index.js 7:0-22
 
 
-
  ###  loader:就是将源代码进行转化称模块
 
  	module: {//模块
@@ -34,7 +33,7 @@ body{
 	}
 
 
-
+### css-loader style-loader
 安装：yarn add css-loader style-loader -D
 
 在webpack.config.js中配置
@@ -83,7 +82,7 @@ body{
 	}
 
 
-设置 less 文件
+### 设置 less 文件
 yarn add less less-loader -D
 
 	//匹配.less文件
@@ -115,6 +114,109 @@ yarn add less less-loader -D
 				'less-loader'//把less转为css
 			]
 		}
+
+### css 代码抽离插件 mini-css-extract-plugin
+
+	<style>
+		<link href=main.css?6276af3ad41926763544 rel=stylesheet>
+	</style>
+安装：yarn add mini-css-extract-plugin -D
+配置：
+let MiniCssExtractPlugin=require('mini-css-extract-plugin')
+
+	module: {//模块
+		//loader
+		rules: [//规则 
+			{
+				test: /\.css$/,
+				use: [
+					MiniCssExtractPlugin.loader,
+					'css-loader',//@import 将css文件转为模块化文件，解析路径
+				]
+			},
+			//匹配.less文件
+			{
+				test: /\.less$/,
+				use: [
+					MiniCssExtractPlugin.loader,
+					'css-loader',//@import 将css文件转为模块化文件，解析路径
+					'less-loader'//把less转为css
+				]
+			}
+		]
+	}
+
+
+### 自动加浏览器前缀  添加浏览器前缀 loader  autoprefixer
+
+1. 安装: yarn add postcss-loader autoprefixer -D
+2. 配置:
+
+		module: {//模块
+		//loader
+		rules: [//规则 
+			{
+				test: /\.css$/,
+				use: [
+					MiniCssExtractPlugin.loader,
+					'css-loader',//@import 将css文件转为模块化文件，解析路径
+					'postcss-loader',
+				]
+			},
+			//匹配.less文件
+			{
+				test: /\.less$/,
+				use: [
+					MiniCssExtractPlugin.loader,
+					'css-loader',//@import 将css文件转为模块化文件，解析路径
+					'postcss-loader',
+					'less-loader'//把less转为css
+				]
+			}
+		]
+	}
+
+
+3. 这时候运行会报错：
+> ERROR in ./src/index.css (./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/src!./src/index.css)
+    Module build failed (from ./node_modules/postcss-loader/src/index.js):
+    Error: No PostCSS Config found in: /Users/songyan/Desktop/study/vueStudy/webpack/learnWebpack/webpack-03/src
+        at config.search.then (/Users/songyan/Desktop/study/vueStudy/webpack/learnWebpack/webpack-03/node_modules/postcss-load-config/src/index.js:91:15)  
+
+
+4. 需要配置postcss.config.js
+	module.exports={
+	plugins:[
+		require('autoprefixer')
+	]
+}
+
+5. 还需要在package.json下面设置browserslist ，否则无效
+	  "browserslist": [
+    "last 1 version",
+    "> 1%",
+    "IE 10"
+  ]
+
+### 压缩生成的main.css文件 压缩css文件
+
+安装：yarn add optimize-css-assets-webpack-plugin -D
+需要配置
+let OptimizeCss =require('optimize-css-assets-webpack-plugin')
+
+	optimization: {//优化，压缩
+		minimizer: [
+			new OptimizeCss()
+		]
+
+
+mode: 'production', 否则.css文件不压缩
+这样设置后，.css文件可以压缩，但是.js文件不压缩了，所以需要设置.js文件
+
+
+### 压缩js uglifyjs-webpack-plugin
+
+安装：yarn add uglifyjs-webpack-plugin -D
 
 
 
