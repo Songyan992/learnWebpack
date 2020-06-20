@@ -82,10 +82,11 @@ body{
 		]
 	}
 
-	设置 less 文件
-	yarn add less less-loader -D
 
-		//匹配.less文件
+设置 less 文件
+yarn add less less-loader -D
+
+	//匹配.less文件
 		{
 			test: /\.less$/,
 			use: [
