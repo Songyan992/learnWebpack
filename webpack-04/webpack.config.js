@@ -22,7 +22,7 @@ module.exports = {
 		contentBase: './dist',
 		// compress: true//压缩
 	},
-	mode: 'production',//模式默认2种，production 生产模式,代码压缩，development 开发模式 代码不压缩
+	mode: 'development',//模式默认2种，production 生产模式,代码压缩，development 开发模式 代码不压缩
 	entry: './src/index.js',//入口
 	output: {//出口
 		filename: 'bundle.js',//打包后的文件名 'bundle.[hash].js'//设置输出文件名是hash,每次都不一样。
@@ -63,6 +63,21 @@ module.exports = {
 					'postcss-loader',
 					'less-loader'//把less转为css
 				]
+			},
+			{
+				test:/\.js$/,
+				use:{
+					loader:'babel-loader',
+					options:{//用babel-loader 作用是把es6->es5
+						presets:[
+							'@babel/preset-env'
+						],
+						plugins:[
+							["@babel/plugin-proposal-decorators", { "legacy": true }],
+							["@babel/plugin-proposal-class-properties", { "loose" : true }]
+						]
+					}
+				}
 			}
 		]
 	}
