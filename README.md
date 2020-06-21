@@ -15,3 +15,5 @@ css 代码抽离插件 mini-css-extract-plugin
 压缩js uglifyjs-webpack-plugin
 
 ## webpack-04
+这一个目录开始，设置忽略文件，减少上传文件，使用的时候，可以 先 yarn  ，根据package.json自行安装依赖包
+然后在 npm run  build 生成dist的编译后文件 ，然后在npm run dev ,实时监听改变的文件
