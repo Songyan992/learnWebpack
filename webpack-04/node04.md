@@ -76,4 +76,50 @@ class A {
 			}
 		}
 
+#### 高级函数转换 regeneratorRuntime异常处理  设置代码运行时的包
+
+如果使用高级函数，在babel-loader不能进行自动转换。会报错
+> Uncaught ReferenceError: regeneratorRuntime is not defined
+    at eval (a.js:1)
+    at Object../src/a.js (bundle.js?4c8365c69c9e4d9f2f96:471)
+    at __webpack_require__ (bundle.js?4c8365c69c9e4d9f2f96:20)
+    at eval (index.js:7)
+    at Object../src/index.js (bundle.js?4c8365c69c9e4d9f2f96:493)
+    at __webpack_require__ (bundle.js?4c8365c69c9e4d9f2f96:20)
+    at eval (webpack:///multi_(:3000/webpack)-dev-server/client?:2:18)
+    at Object.0 (bundle.js?4c8365c69c9e4d9f2f96:515)
+    at __webpack_require__ (bundle.js?4c8365c69c9e4d9f2f96:20)
+    at bundle.js?4c8365c69c9e4d9f2f96:84
+
+安装：
+ yarn add @babel/plugin-transform-runtime -D
+ yarn add @babel/runtime
+
+配置：
+	{
+		"plugins": ["@babel/plugin-transform-runtime"]
+	}
+
+#### es7 includes 高级语法配置 @babel/polyfill
+
+安装： yarn add  @babel/polyfill
+
+使用的时候需要在文件中引入 require("@babel/polyfill")
+打包后：Array.prototype.includes
+
+#### 给js代码添加校验器 eslint-loader
+安装：yarn add eslint eslint-loader -D
+配置：
+
+	{
+			test: /\.js$/,
+			use: {
+				loader: 'eslint-loader',
+				options: {
+					enforce: 'pre'//previous强制 在babel-loader前面执行
+				}
+			},
+		},
+
+设置.eslintrc.json
 

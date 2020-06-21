@@ -1,9 +1,9 @@
 // webpack 是node 写出来的 所以使用的时候，需要node语法
 let path = require('path')
 let HtmlWebpackPlugin = require("html-webpack-plugin")
-let MiniCssExtractPlugin=require('mini-css-extract-plugin')
-let OptimizeCss =require('optimize-css-assets-webpack-plugin')
-let UglifyjsWebpackPlugin =require('uglifyjs-webpack-plugin')
+let MiniCssExtractPlugin = require('mini-css-extract-plugin')
+let OptimizeCss = require('optimize-css-assets-webpack-plugin')
+let UglifyjsWebpackPlugin = require('uglifyjs-webpack-plugin')
 
 module.exports = {
 	optimization: {//优化，压缩
@@ -12,7 +12,7 @@ module.exports = {
 			new UglifyjsWebpackPlugin({
 				cache: true,
 				parallel: true,
-				sourceMap:true
+				sourceMap: true
 			})
 		]
 	},
@@ -40,7 +40,7 @@ module.exports = {
 			hash: true,//对引入文件名进行hash设置
 		}),
 		new MiniCssExtractPlugin({
-			filename:'main.css'
+			filename: 'main.css'
 		})
 	],
 	module: {//模块
@@ -65,19 +65,31 @@ module.exports = {
 				]
 			},
 			{
-				test:/\.js$/,
-				use:{
-					loader:'babel-loader',
-					options:{//用babel-loader 作用是把es6->es5
-						presets:[
+				test: /\.js$/,
+				use: {
+					loader: 'eslint-loader',
+					options: {
+						enforce: 'pre'//previous强制 在babel-loader前面执行
+					}
+				},
+			},
+			{
+				test: /\.js$/,
+				use: {
+					loader: 'babel-loader',
+					options: {//用babel-loader 作用是把es6->es5
+						presets: [
 							'@babel/preset-env'
 						],
-						plugins:[
+						plugins: [
 							["@babel/plugin-proposal-decorators", { "legacy": true }],
-							["@babel/plugin-proposal-class-properties", { "loose" : true }]
+							["@babel/plugin-proposal-class-properties", { "loose": true }],
+							"@babel/plugin-transform-runtime"
 						]
 					}
-				}
+				},
+				include: path.resolve(__dirname, "src"),
+				exclude: /node_modules/
 			}
 		]
 	}
