@@ -3,6 +3,7 @@ let HtmlWebpackPlugin = require("html-webpack-plugin")
 let MiniCssExtractPlugin = require('mini-css-extract-plugin')
 // let OptimizeCss = require('optimize-css-assets-webpack-plugin')
 // let UglifyjsWebpackPlugin = require('uglifyjs-webpack-plugin')
+let Webpack =require('webpack')
 
 module.exports = {
 	// optimization: {//优化，压缩
@@ -40,11 +41,22 @@ module.exports = {
 		}),
 		new MiniCssExtractPlugin({
 			filename: 'main.css'
-		})
+		}),
+		// new Webpack.ProvidePlugin({//在每个模块中都注入$
+		// 	$:'jquery'
+		// })
 	],
+	externals: {//忽略／排除
+    jquery: '$'
+  },
 	module: {//模块
 		//loader
 		rules: [//规则 
+			// 使用loader的方式，jquery暴露给全局
+			// {
+			// 	test:require.resolve('jquery'),
+			// 	use:'expose-loader?$'
+			// },
 			{
 				test: /\.css$/,
 				use: [
