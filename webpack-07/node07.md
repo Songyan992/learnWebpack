@@ -3,6 +3,7 @@
 yarn add webpack webpack-cli -D
 
 多个入口配置时候会报错
+
 	let path=require('path')
 	module.exports={
 		//多个入口
