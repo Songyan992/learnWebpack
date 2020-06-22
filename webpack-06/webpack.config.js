@@ -27,7 +27,8 @@ module.exports = {
 	output: {//出口
 		filename: 'bundle.js',//打包后的文件名 'bundle.[hash].js'//设置输出文件名是hash,每次都不一样。
 		//'bundle.[hash:8].js' 设置8位的hash值
-		path: path.resolve(__dirname, 'dist')//路径必须是一个绝对路径
+		path: path.resolve(__dirname, 'dist'),//路径必须是一个绝对路径
+		//publicPath:'http:www.xxx.com'
 	},
 	plugins: [//数组，存放着所以的webpack 插件
 		new HtmlWebpackPlugin({
@@ -40,7 +41,7 @@ module.exports = {
 			hash: true,//对引入文件名进行hash设置
 		}),
 		new MiniCssExtractPlugin({
-			filename: 'main.css'
+			filename: 'css/main.css'
 		}),
 	],
 	// externals: {//忽略／排除
@@ -49,6 +50,27 @@ module.exports = {
 	module: {//模块
 		//loader
 		rules: [//规则 
+			{
+				test:/\.html$/,
+				use:[
+					'html-withimg-loader'
+				]
+			},
+			{
+				test:/\.(png|jpg|gif)$/,
+				use:{
+					// 'file-loader'
+					//做一个限制，小于多少k的时候，就用base64来转换
+					//否则用file-loader产生真实的图片
+					loader:'url-loader',
+					options:{
+						limit:1,
+						esModule: false,
+						outputPath:'/img/',
+						publicPath:'http:www.xxx.com'
+					}
+				}
+			},
 			{
 				test: /\.css$/,
 				use: [
@@ -75,11 +97,11 @@ module.exports = {
 						presets: [
 							'@babel/preset-env'
 						],
-						plugins: [
-							["@babel/plugin-proposal-decorators", { "legacy": true }],
-							["@babel/plugin-proposal-class-properties", { "loose": true }],
-							"@babel/plugin-transform-runtime"
-						]
+						// plugins: [
+						// 	["@babel/plugin-proposal-decorators", { "legacy": true }],
+						// 	["@babel/plugin-proposal-class-properties", { "loose": true }],
+						// 	"@babel/plugin-transform-runtime"
+						// ]
 					}
 				},
 				include: path.resolve(__dirname, "src"),

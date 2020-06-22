@@ -1,5 +1,14 @@
 @import './a.css';
+
 body{
 	background: aquamarine;
-	transform: rotate(45deg);
+	/* transform: rotate(45deg); */
+}
+div{
+	border: 2px solid #a2a2a2;
+	width: 300px;
+	height: 300px;
+	font-size: 30px;
+	color: white;
+	background: url('./33.jpg');
 }
