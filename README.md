@@ -29,7 +29,10 @@ jquery  ->$
 
 打包文件分类：具体看node06
 
+## webpack-07 webpack 多文件打包，多入口，source-map 配置
+webpack.config多入口配置.js 
 
+webpack.config.js source-map配置
 
 
 
