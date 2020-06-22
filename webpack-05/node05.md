@@ -1,5 +1,5 @@
 ### webpack 配置第三方插件
-#### jqurey
+#### jqurey，将jquery暴露给全局，全局变量引入问题
 安装：yarn add jquery
 
 
