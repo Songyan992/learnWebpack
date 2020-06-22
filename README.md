@@ -23,7 +23,14 @@ css 代码抽离插件 mini-css-extract-plugin
 
 jquery  ->$
 
-## webpack-06 webpack 打包图片
+## webpack-06 webpack 文件／图片打包 ／文件分类
+
+打包图片：file-loader url-loader html-withimg-loader
+
+打包文件分类：具体看node06
+
+
+
 
 
 
