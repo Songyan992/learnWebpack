@@ -36,6 +36,14 @@ webpack.config.js source-map配置
 
 ## webpack-08 watch用法 和一些小插件
 
+watch:实时监听build编译后的代码
+
+cleanWebpackPlugin:先删除之前的dist目录，创建新的dist
+
+copyWebpackPlugin:将文件copy到dist文件目录下
+
+bannerPlugin:版权申明插件
+
 ## webpack-09 webpack跨域
 
 配置跨域 devServer
