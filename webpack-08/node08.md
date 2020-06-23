@@ -5,9 +5,13 @@ watch作用：实时监听build编译后的代码
 配置：	
 
   watch:true,
+
   watchOptions:{//监控选项
+
 		poll:1000,//每秒监控一次
+
 		aggregateTimeout:500,//防抖，一直输入代码，不能一直监控
+
 		ignored:/node_modules/   //忽略监控文件
 	}
 
@@ -25,6 +29,7 @@ npm run build :webpack is watching the files…
 配置：
 
   let { CleanWebpackPlugin } = require('clean-webpack-plugin');
+
 	plugins: [
 		new CleanWebpackPlugin()
 	]
@@ -36,6 +41,7 @@ npm run build :webpack is watching the files…
 使用： 
 
   let CopyWebpackPlugin=require("copy-webpack-plugin")
+	
 	new CopyWebpackPlugin({
 		patterns:[
 			{from:'test',to:"./"}
