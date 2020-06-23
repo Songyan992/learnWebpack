@@ -158,9 +158,9 @@
 
 import "./index"
 
-> ERROR in ./src/home.js
-Module not found: Error: Can't resolve './index' in '/Users/songyan/Desktop/study/vueStudy/webpack/learnWebpack/webpack-09/src'
- @ ./src/home.js 2:0-17
+	ERROR in ./src/home.js
+	Module not found: Error: Can't resolve './index' in '/Users/songyan/Desktop/study/vueStudy/webpack/learnWebpack/webpack-09/src'
+	@ ./src/home.js 2:0-17
 
 
 配置：	extensions:['.js','.css','.json','.vue']
