@@ -1,10 +1,23 @@
 // import "bootstrap"
 // import "./index"
-
-let xhr=new XMLHttpRequest()
-xhr.open('GET','/user',true)
-xhr.onload=function(){
-	console.log(xhr.response);
-	
+let url =''
+if(DEV){
+	url="http://localhost:3000"
+}else{
+	url="http://www.xxx.com"
 }
-xhr.send()
+console.log("=======>",url);
+
+console.log(typeof FLAG);
+console.log(EXPORESSION);
+
+
+
+
+// let xhr=new XMLHttpRequest()
+// xhr.open('GET','/user',true)
+// xhr.onload=function(){
+// 	console.log(xhr.response);
+	
+// }
+// xhr.send()

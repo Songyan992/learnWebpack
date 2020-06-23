@@ -1,6 +1,6 @@
 let path = require('path');
 let HtmlWebpackPlugin = require("html-webpack-plugin");
-
+let Webpack =require('webpack')
 module.exports = {
 	mode: 'production',
 	entry: {
@@ -14,6 +14,11 @@ module.exports = {
 		new HtmlWebpackPlugin({
 			template: './index.html',
 			filename: 'index.html'
+		}),
+		new Webpack.DefinePlugin({
+			DEV:JSON.stringify('production'),
+			FLAG:'true',
+			EXPORESSION:JSON.stringify("1+1")
 		})
 	],
 
