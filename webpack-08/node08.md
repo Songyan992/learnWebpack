@@ -23,6 +23,7 @@ npm run build :webpack is watching the files…
 安装：yarn add clean-webpack-plugin -D
 
 配置：
+
 	let { CleanWebpackPlugin } = require('clean-webpack-plugin');
 	plugins: [
 		new CleanWebpackPlugin()
@@ -33,6 +34,7 @@ npm run build :webpack is watching the files…
 安装：yarn add copy-webpack-plugin -D
 
 使用： 
+
 	let CopyWebpackPlugin=require("copy-webpack-plugin")
 	new CopyWebpackPlugin({
 		patterns:[
@@ -43,6 +45,7 @@ npm run build :webpack is watching the files…
 3.bannerPlugin //内置 版权申明插件
 
 使用
+
 	let Webpack =require("webpack")
 	new Webpack.BannerPlugin("make 2020 by songyan")
 
