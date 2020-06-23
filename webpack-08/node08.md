@@ -3,6 +3,7 @@
 watch作用：实时监听build编译后的代码
 
 配置：	
+
 	watch:true,
 	watchOptions:{//监控选项
 		poll:1000,//每秒监控一次
