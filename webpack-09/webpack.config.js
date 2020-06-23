@@ -16,6 +16,30 @@ module.exports = {
 			filename: 'index.html'
 		})
 	],
+	// devServer:{
+	// 	proxy:{
+	// 		"/api":'http://localhost:3000'//配置一个代理
+	// 	}
+	// },
+	devServer:{
+		// 方式1:
+		// proxy:{//配置一个代理
+		// 	"/api":{
+		// 		target:'http://localhost:3000',
+		// 		pathRewrite:{
+		// 			'/api':''
+		// 		}
+
+		// 	}
+		// }
+
+		// 2. 前端只想单纯来模拟数据
+		before(app){//提供的钩子
+			app.get('/user',(req,res)=>{
+				res.json({name:'aaa--before'})
+			})
+		}
+	},
 	module: {
 		rules: [
 			{

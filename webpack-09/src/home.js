@@ -1,9 +1,7 @@
-console.log('home1');
-
-class A{
-	constructor(){
-		console.log("出错了333");
-		
-	}
+let xhr=new XMLHttpRequest()
+xhr.open('GET','/user',true)
+xhr.onload=function(){
+	console.log(xhr.response);
+	
 }
-let a=new A()
+xhr.send()
