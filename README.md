@@ -38,6 +38,11 @@ webpack.config.js source-map配置
 
 ## webpack-09 webpack跨域
 
+配置跨域 devServer
+
+设置resolve :设置别名，设置默认后缀等
+
+
 
 
 
