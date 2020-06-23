@@ -53,4 +53,7 @@ bannerPlugin:版权申明插件
 
 ## webpack-10 webpack 环境设置
 
+设置生产环境和开发环境，具体看node10.md
+
+
 
