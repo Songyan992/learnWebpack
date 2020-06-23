@@ -1,8 +1,8 @@
-console.log('home');
+console.log('home1');
 
 class A{
 	constructor(){
-		console.log("出错了98978");
+		console.log("出错了333");
 		
 	}
 }
