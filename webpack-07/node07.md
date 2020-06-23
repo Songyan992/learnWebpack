@@ -31,7 +31,7 @@ Conflict: Multiple assets emit to the same filename bundle.js
 yarn add html-webpack-plugin -D
 
 
-### 配置source-map
+### 配置source-map, 调试错误，配置
 
 yarn add @babel/core @babel/preset-env babel-loader webpack-dev-server -D
 
