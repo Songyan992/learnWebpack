@@ -16,6 +16,16 @@ module.exports = {
 			filename: 'index.html'
 		})
 	],
+	resolve:{//解析 第三方包 common等
+		modules: ['node_modules'],
+		extensions:['.js','.css','.json','.vue']
+		// mainFields:['style','main']
+		// mainFiles:['style']
+		// alias:{//设置别名
+		// 	bootstrap:'bootstrap/dist/css/bootstrap.css'
+		// }
+	},
+
 	// devServer:{
 	// 	proxy:{
 	// 		"/api":'http://localhost:3000'//配置一个代理
@@ -42,6 +52,13 @@ module.exports = {
 	},
 	module: {
 		rules: [
+			{
+				test:/\.css$/,
+				use:[
+					'style-loader',
+					'css-loader'
+				]
+			},
 			{
 				test: /\.js$/,
 				use: {

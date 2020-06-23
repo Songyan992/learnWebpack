@@ -108,3 +108,62 @@
 	app.listen(3000)
 
 	直接运行http://localhost:3000 可以拿到打包后的数据
+
+
+### resolve 的使用
+
+安装样式loader  yarn add css-loader style-loader -D
+
+配置：
+
+		rules: [
+			{
+				test:/\.css$/,
+				use:[
+					'style-loader',
+					'css-loader'
+				]
+			}
+		]
+
+安装样式框架：yarn add bootstrap
+
+使用：import "bootstrap"//这样使用的是默认的bootstrap.js文件,需要设置
+
+使用：import "bootstrap/dist/css/bootstrap.css"
+
+或者配置别名
+
+	resolve:{//解析 第三方包 common等
+		modules: ['node_modules'],
+		alias:{//设置别名
+			bootstrap:'bootstrap/dist/css/bootstrap.css'
+		}
+	},
+
+这样使用的时候就可以直接用：import "bootstrap"
+
+或者配置
+
+	resolve:{//解析 第三方包 common等
+		modules: ['node_modules'],
+		mainFields:['style','main']
+		// alias:{//设置别名
+		// 	bootstrap:'bootstrap/dist/css/bootstrap.css'
+		// }
+	},
+
+
+##### import 文件不写后缀就会报错，在resolve中配置不用写后缀也能引用
+
+import "./index"
+
+> ERROR in ./src/home.js
+Module not found: Error: Can't resolve './index' in '/Users/songyan/Desktop/study/vueStudy/webpack/learnWebpack/webpack-09/src'
+ @ ./src/home.js 2:0-17
+
+
+配置：	extensions:['.js','.css','.json','.vue']
+
+
+
