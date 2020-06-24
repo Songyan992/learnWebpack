@@ -55,5 +55,9 @@ bannerPlugin:版权申明插件
 
 设置生产环境和开发环境，具体看node10.md
 
+## webpack-11 webpack 优化／多线程打包／动态连接库的使用
 
+具体看node11.md的笔记
+
+## webpack-12 webpack 自带的优化
 
