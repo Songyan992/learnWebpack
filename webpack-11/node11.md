@@ -100,3 +100,66 @@ yarn add react react-dom
 然后在执行：npm run build
 
 打包后大小：976 KiB->6.49 KiB 
+
+
+### webpack 多线程打包 happypack
+
+happypack可以使用多线程打包
+
+安装：yarn add happypack
+
+使用配置：
+
+	let Happypack = require("happypack")
+	plugins: [
+		new Happypack({
+			id: 'js',
+			use: [
+				{
+					loader: 'babel-loader',
+					options: {
+						presets: [
+							"@babel/preset-env",
+							"@babel/preset-react"
+						]
+					}
+				}
+			]
+		}),
+		new Happypack({
+			id:'css',
+			use:['style-loader','css-loader']
+		})
+	]
+
+	module: {
+		noParse: /jquery/,//不去解析jquery下的依赖包
+		rules: [
+			{
+				test: /\.js$/,
+				exclude: /mode_modules/,//排除mode_modules下的js
+				include: path.resolve("src"),//只去匹配src目录下的js文件
+				// use: {
+				// 	loader: 'babel-loader',
+				// 	options: {
+				// 		presets: [
+				// 			"@babel/preset-env",
+				// 			"@babel/preset-react"
+				// 		]
+				// 	}
+				// }
+				use: "Happypack/loader?id=js"
+
+			},
+			{
+				test:'/\.css$/',
+				use:"Happypack/loader?id=css"
+			}
+		]
+	}
+
+运行：npx webapck 这样会启动3个线程来打包：Happy[js]: Version: 5.0.1. Threads: 3
+
+针对大项目，小项目没有必要，多线程分配反而耗时多
+
+
