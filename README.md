@@ -59,5 +59,8 @@ bannerPlugin:版权申明插件
 
 具体看node11.md的笔记
 
-## webpack-12 webpack 自带的优化
+## webpack-12 webpack 公共代码抽离
+
+抽离公共自己写的代码， 抽离第三方引入的库 jquery等
+
 
