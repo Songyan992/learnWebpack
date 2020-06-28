@@ -16,6 +16,7 @@ module.exports = {
 
 
 	devServer: {
+		hot:true,
 		port: 3000,
 		open: true,
 		contentBase: './dist'
@@ -24,6 +25,8 @@ module.exports = {
 		new HtmlWebpackPlugin({
 			template: './public/index.html'
 		}),
+		new Webpack.NamedModulesPlugin({}),//哪个模块需要热更新
+		new Webpack.HotModuleReplacementPlugin({})////热更新插件
 	],
 	mode: 'production',
 	module: {

@@ -64,5 +64,5 @@ bannerPlugin:版权申明插件
 抽离公共自己写的代码， 抽离第三方引入的库 jquery等
 
 
-## webpack-13 webpack  懒加载
+## webpack-13 webpack  懒加载和热更新
 
