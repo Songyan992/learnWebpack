@@ -9,6 +9,7 @@ class Lesson{
 	tap(){
 		this.hooks.arch.tap('node',name=>{
 			console.log('node',name);
+			// return "停止了"//syncBailHook
 		}),
 		this.hooks.arch.tap('react',name=>{
 			console.log('react',name);
