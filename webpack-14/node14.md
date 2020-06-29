@@ -13,3 +13,15 @@ webpack 是一种事件流机制，它的工作流程是将各个插件串联起
 	} = require("tapable");
 
 安装：yarn add tapable
+
+
+同步钩子包括：
+
+SyncHook 同步钩子
+
+SyncBailHook 同步钩子有retern 值，只要不是undefind就会继续向下执行
+
+SyncWaterFallHook 同步钩子，有retern 值，retern 值会向下传递
+
+SyncLoopHook 同步钩子，有retern 值，遇到不返undefined时，会监听多次执行,直到 undefined
+
