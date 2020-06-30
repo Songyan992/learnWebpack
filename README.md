@@ -66,3 +66,4 @@ bannerPlugin:版权申明插件
 
 ## webpack-13 webpack  懒加载和热更新
 
+## webpack-14 webpack  tapable 同步钩子和异步钩子

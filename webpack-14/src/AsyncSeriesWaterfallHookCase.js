@@ -1,4 +1,4 @@
-class AsyncSeriesWaterfallHook {//异步串行瀑布参数传递
+class AsyncSeriesWaterfallHook {//
 	constructor(args) {//args数组
 		this.tasks = []
 	}
@@ -9,13 +9,13 @@ class AsyncSeriesWaterfallHook {//异步串行瀑布参数传递
 	callAsync(...args) {
 		let finalCallBack = args.pop()//拿出最终的函数
 		let index = 0
-		let next = (err, data) => {//promise.all
-			let task = this.tasks[index]
-			if (!task) return finalCallBack()
-			if (index === 0) {
-				task(...args, next)
-			} else {
-				task(data, next)
+		let next = (err,data) => {//promise.all
+			let task=this.tasks[index]
+			if(!task)return finalCallBack()
+			if(index==0){
+				task(...args,next)
+			}else{
+				task(data,next)
 			}
 			index++
 		}
@@ -37,7 +37,7 @@ let hook = new AsyncSeriesWaterfallHook([])
 hook.tapAsync('react', (name, cd) => {
 	setTimeout(() => {
 		console.log('react', name);
-		cd(null, '结果')
+		cd(null,'结果')
 	}, 1000);
 });
 hook.tapAsync('node', (data, cd) => {
@@ -46,7 +46,9 @@ hook.tapAsync('node', (data, cd) => {
 		cd(null)
 	}, 1000);
 });
-
+hook.tap('vue', data => {
+	console.log('vue', data);
+});
 
 hook.callAsync('songyan', () => {
 	console.log("end");
