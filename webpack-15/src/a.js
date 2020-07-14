@@ -1,2 +1,5 @@
-let b=require('./b.js')
-module.exports='a'+b
+let b = require('./b')
+
+console.log(b);
+
+module.exports = 'a' + b

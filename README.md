@@ -67,3 +67,8 @@ bannerPlugin:版权申明插件
 ## webpack-13 webpack  懒加载和热更新
 
 ## webpack-14 webpack  tapable 同步钩子和异步钩子
+
+## webpack-15 webpack  手写webpack
+
+建立自定义的pack文件，通过 npm link 来链接
+

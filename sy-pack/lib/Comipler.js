@@ -4,6 +4,7 @@ let babylon = require('babylon')
 let t = require('@babel/types')
 let traverse = require('@babel/traverse').default
 let generator = require("@babel/generator").default
+let ejs = require('ejs')
 
 //babylon 主要是把源码转换成ast
 //@babel/traverse。主要是遍历节点
@@ -24,9 +25,9 @@ class Comipler {
 	run() {
 		//执行，并创建依赖关系
 		this.buildModule(path.resolve(this.root, this.entry), true)
-		console.log(this.modules);
-		console.log(this.entryId);
-		
+		// console.log(this.modules);
+		// console.log(this.entryId);
+
 		// 发射一个打包后的文件
 		this.emitFile()
 	}
@@ -51,8 +52,8 @@ class Comipler {
 		//把相对路径和模块中内容对应起来
 		this.modules[moduleName] = sourceCode
 
-		dependencies.forEach((dep=>{//附属模块 的递归加载
-			this.buildModule(path.join(this.root,dep),false)
+		dependencies.forEach((dep => {//附属模块 的递归加载
+			this.buildModule(path.join(this.root, dep), false)
 		}));
 	}
 
@@ -80,6 +81,17 @@ class Comipler {
 	}
 	emitFile() {
 		//用对象渲染模版
+		// 输入到哪个目录下,输出路径
+		let main = path.join(this.config.output.path, this.config.output.filename)
+		//模版路径
+		let templateStr = this.getSource(path.join(__dirname, 'main.ejs'))
+		let code = ejs.render(templateStr, { entryId: this.entryId, modules: this.modules })
+		this.assets = {}
+		//资源组，路径对应的代码
+		this.assets[main] = code
+		// console.log(main);
+		
+		fs.writeFileSync(main, this.assets[main])
 	}
 }
 
